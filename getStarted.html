@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Funkin.mit docs | get started</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="Prism/prism.css" />
+  <script src="Prism/prism.js"></script>
+</head>
+
+<body>
+  <div style="padding: 10px; background-color: #192560fc; height: 50px;">
+    <a href="index.html">home</a>
+  </div>
+<h2 id="for-make-mods-simple-">for make mods simple:</h2>
+<div class="boxe">
+
+<pp>for make simple <code class="lang-md">mods folder</code> (if you used pysch engine) you have to copie the template in :</pp>
+<pre><code class="lang-md">/mods
+  <span class="hljs-built_in">base</span>-game
+  template.zip    -- <span class="hljs-built_in">not</span> make yet
+</code></pre><p>un-zip it and modified im, help you with the <code>readme.md</code> :].</p>
+
+</div><h2 id="for-make-full-mods-">for make full mods:</h2>
+<div class="boxe">
+
+<pp>for make full mods (modifed the source code), you have to modifie the :</pp>
+<pre><code class="lang-md">/source
+  assets/
+  mods/
+  scripts/  -- <span class="hljs-keyword">this</span>
+  ...
+</code></pre><blockquote>
+<p>[!WARNING]
+can be hard to modifie, call me if you have any probleme.</p>
+</blockquote>
+<p><strong>or</strong></p>
+<pp>modified the in <code class="lang-md">mods script folder</code>, more easy</pp>
+<pre><code class="lang-md">/myMods
+  /scripts
+    onGame<span class="hljs-selector-class">.js</span>
+    onFreeplay<span class="hljs-selector-class">.js</span>
+    ...
+</code></pre><blockquote>
+<p>[!NOTE]
+if you want call a other script in use <code>FMS_playScript(&quot;myScript&quot;,&quot;scripts/myLittleScript.js)</code></p>
+</blockquote>
+
+</div>
+<h2 id="if-you-use-the-old-version-">if you use the old version:</h2>
+<div class="boxe">
+
+<p>you have to use the source code
+<del>use <a href="https://eyefly.itch.io/wapper-html-to-exe"><strong>wapper HTML to exe</strong></a></del></p>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Funkin.mit docs | scripting</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="Prism/prism.css" />
+  <script src="Prism/prism.js"></script>
+</head>
+
+<body>
+  <div style="padding: 10px; background-color: #192560fc; height: 50px;">
+    <a href="index.html">home</a>
+  </div>
+<h1>events :</h1>
+<hr>
+<h2>game function :</h2>
+<div class="boxe">
+  <warn>⟁ change expect !</warn><note>function work in jula to :]</note><br><br><br>
+  
+  <pp>• on game loading ( before user interaction ) :</pp>
+  
+  <pre style="padding: 0px;"><code  class="lang-js">
+    function onGameInit() {
+      // something here
+    }
+  </code></pre><br>
+  
+  <pp>• after player interaction ( after the 'press to play' ):</pp>
+  <pre style="padding: 0px;"><code  class="lang-js">
+    function onGameStart(longNotes=boolean) {
+      // something here<br>
+    }
+  </code></pre><br>
+
+  
+  <pp>• on every BPM Beat hit :</pp>
+  <pre style="padding: 0px;"><code  class="lang-js">
+    function beatHit() {
+      // something here
+    }
+  </code></pre><br>
+  
+  <pp>• on every new chart step :</pp>
+  <pre style="padding: 0px;"><code  class="lang-js">
+    function stepHit() {
+      // something here
+    }
+  </code></pre><br>
+
+  <pp>• on player sick notes press :</pp>
+  <pre style="padding: 0px;"><code  class="lang-js">
+    function onNotesHit(longNotes=boolean) {
+      // something here
+    }
+  </code></pre><br>
+  
+  <pp>• when the player miss a notes :</pp>
+  <pre style="padding: 0px;"><code  class="lang-js">
+    function onMiss(longNotes=boolean) {
+      // something here
+    }
+  </code></pre><br>
+  
+  <pp>• when the opponent sick a notes :</pp>
+  <pre style="padding: 0px;"><code  class="lang-js">
+    function onNotesOpponentHit() {
+      // something here
+    }
+  </code></pre><br>
+
+  <pp>• is this can be possible ? :</pp>
+  <pre style="padding: 0px;"><code  class="lang-js">
+    function onOpponentMiss() {
+      // something here
+    }
+  </code></pre><br>
+
+  <pp>• every events played :</pp>
+  <pre style="padding: 0px;"><code  class="lang-js">
+    function onEvents(data=[array]) {
+      // something here
+    }
+  </code></pre>
+  <p>can be use like this :</p>
+  <pre style="padding: 0px;"><code  class="lang-js">
+    function onEvents(data) {
+      console.log("the events '"+data[0]+"' with in '"+data[1]+"' and '"+data[2]+"' have been played :D !")
+    }
+    
+    // if your event is ["my events","test content1","test content2"]
+    // output: "the events 'my events' with in 'test content1' and 'test content2' have been played :D !"
+  </code></pre><br>
+
+</div>
+
+
+<hr>
+<h1>FMS/Funkin.mit script's :</h1>
+<hr />
+
+
+<h2 id="fms-playanim">FMS-playAnim</h2>
+<div class="boxe">
+
+  <p><code>FMS_playAnim()</code> can be used for play custom characters (dad, gf, bf) anim</p>
+  <pre><code class="lang-js">FMS_playAnim(<span class="hljs-name">characterName=</span><span class="hljs-string">"string"</span>,animName=<span class="hljs-string">"string"</span>,isLooping=<span class="hljs-string">"boolean"</span>)<span class="hljs-comment">;</span>
+  </code></pre>
+  <p>exemple : </p>
+  
+<pre><code class="lang-js"><span class="hljs-comment">// play *player* *cheer* animation without looping it</span>
+FMS_playAnim(<span class="hljs-string">"bf"</span>,<span class="hljs-string">"cheer"</span>,<span class="hljs-literal">false</span>);
+</code></pre>
+
+<p>avansed exemple : </p>
+<pre><code class="lang-js"><span class="hljs-comment">// play in loop *opponent* *sad* animation every time the player do a good notes hit</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onNotesHit</span><span class="hljs-params">(longNotes)</span> </span>{
+  FMS_playAnim(<span class="hljs-string">"dad"</span>,<span class="hljs-string">"sad"</span>,<span class="hljs-literal">true</span>);
+}
+</code></pre>
+<pre><code class="lang-lua"><span class="hljs-comment">-- in jlua</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onNotesHit</span><span class="hljs-params">(longNotes)</span></span>
+  FMS_playAnim(<span class="hljs-string">"dad"</span>,<span class="hljs-string">"sad"</span>,<span class="hljs-keyword">true</span>);
+<span class="hljs-keyword">end</span>
+</code></pre>
+
+</div>
+
+<!-- _______________ -->
+
+<h2 id="fms-playanim">FMS-makeElement</h2>
+<div class="boxe">
+  <p><code>FMS_makeElement()</code> can be used for make elements like a boxe, square, circle... for a UI !</p>
+  <pre><code class="lang-js">FMS_makeElement(id="element",x = 1,y = 1,z = 1,w = 100,h = 100,putIn = "default/GAME/GUI etc..")</span>
+  </code></pre>
+  <p>exemple : </p>
+  
+  <pre style="padding: 0px;"><code class="lang-js"><span class="hljs-comment">
+    FMS_makeElement("aBoxe",10,100,1,200,200,"GAME")
+  </code></pre>
+  
+  <p>avansed exemple : </p>
+  <pre style="padding: 0px;"><code class="lang-js">
+    let boxe = FMS_makeElement("aBoxe",10,100,1,200,200,"GAME");
+    boxe.style.opacity = 0.5;
+    boxe.onclick = function () {
+      boxe.remove();
+    }
+  </code></pre>
+  <pre style="padding: 0px;"><code class="lang-lua">
+    local boxe = FMS_makeElement("aBoxe",10,100,1,200,200,"GAME")
+    boxe.style.opacity = 0.5
+    boxe.onclick = function ()
+      boxe.remove()
+    end
+  </code></pre>
+</div>
+
+<!-- _______________ -->
+
+<h2 id="fms-playanim">FMS-makeText</h2>
+<div class="boxe">
+  <p><code>FMS_makeText()</code> can be used for make a simple Text !</p>
+  <pre><code class="lang-js">FMS_makeText(id = "element",text = "Hello word !",x = 1,y = 1,z = 1,scale = 1,putIn = "default")</span>
+  </code></pre>
+  <p>exemple : </p>
+  
+  <pre style="padding: 0px;"><code class="lang-js"><span class="hljs-comment">
+    FMS_makeText("myText","Hello word !",1,1,2,1,"GUI")
+  </code></pre>
+  
+  <p>avansed exemple : </p>
+  <pre style="padding: 0px;"><code class="lang-js">
+    var text = FMS_makeText("myText","Hello word !",1,1,2,1,"GUI");
+    var x = 1;
+    
+    setInterval((/* move the text at the right */) => {
+      x++;  // add +1 every loop
+      text.style.left = x+"px";
+    },10) // 0.1 sec 
+  </code></pre>
+  <pre style="padding: 0px;"><code class="lang-lua">
+    local text = FMS_makeText("myText","Hello word !",1,1,2,1,"GUI");
+    local x = 1;
+    
+    loop(function (--[[ move the text at the right ]]) 
+      x++; --add +1 every loop
+      text.style.left = x+"px";
+    end,10) --0.1 sec
+  </code></pre>
+</div>
+
+<!-- _______________ -->
+
+<h2 id="fms-playanim">FMS-makeImage</h2>
+<div class="boxe">
+  <p><code>FMS_makeImage()</code> can be used for put image !</p>
+  <pre><code class="lang-js">FMS_makeText(id = "element",scr = "path/to/my/images",x = 1,y = 1,z = 1,scale = 1,putIn = "default")</span>
+  </code></pre>
+  <p>exemple : </p>
+  
+  <pre style="padding: 0px;"><code class="lang-js"><span class="hljs-comment">
+    FMS_makeImage("myImages",game.imagesFolder+"/myImages.png",1,1,2,1,"GUI")
+  </code></pre>
+  
+  <p>avansed exemple : </p>
+  <pre style="padding: 0px;"><code class="lang-js">
+    var images = FMS_makeText("myText",game.imagesFolder+"/myImages.png",1,1,2,1,"GUI");
+    
+    // show the image every time the opponent note press
+    function onNotesOpponentHit() {
+      images.style.visibility = "visible";
+      
+      setTimeOut((/* wait 1 sec*/) => {
+        images.style.visibility = "hidden";
+      },1000) // 1 sec
+    }
+  </code></pre>
+  <pre style="padding: 0px;"><code class="lang-lua">
+    local images = FMS_makeText("myText",game.imagesFolder+"/myImages.png",1,1,2,1,"GUI")
+    
+    -- show the image every time the opponent note press
+    function onNotesOpponentHit() 
+      images.style.visibility = "visible";
+    
+      setTimeOut(function (--[[ wait 1 sec ]])
+        images.style.visibility = "hidden"
+      end,1000) -- 1 sec
+    end
+  </code></pre>
+</div>
+
+
+<!-- ___________________ -->
+
+<h2 id="fms-playanim">FMS-makeFolder</h2>
+<div class="boxe">
+  <p><code>FMS_makeFolder()</code> can be used for put any element in or derivate for turn it into a UI !</p>
+  <pre><code class="lang-js">FMS_makeFolder(id = "element",putIn = "default")</span>
+  </code></pre>
+  <p>exemple : </p>
+  
+  <pre style="padding: 0px;"><code class="lang-js"><span class="hljs-comment">
+    FMS_makeFolder("myFolder","GUI")
+  </code></pre>
+  
+  <p>avansed exemple : </p>
+  <pre style="padding: 0px;"><code class="lang-js">
+    var folder = FMS_makeFolder("myFolder","GUI");
+    folder.appendChild(game.gui); // put all the gui in the folder xd
+    
+    // or
+    
+    folder.style.backgroundColor = "blue"; // make all the background blue
+    folder.style.width = "100px";
+    folder.style.height = "100px";
+  </code></pre>
+  <pre style="padding: 0px;"><code class="lang-lua">
+    local folder = FMS_makeFolder("myFolder","GUI");
+    folder.appendChild(game.gui) -- put all the gui in the folder xd
+    
+    -- or
+    
+    folder.style.backgroundColor = "blue" -- make all the background blue
+    folder.style.width = "100px"
+    folder.style.height = "100px"
+  </code></pre>
+</div>
+
+<!-- ___________________ -->
+
+<h2 id="fms-playanim">FMS-saveFile</h2>
+<div class="boxe">
+  <p><code>FMS_saveFile()</code> can be used for save any element in file !</p>
+  <pre><code class="lang-js">FMS_saveFile(filename = "myText.txt",data = "hello words !",as = "text/plain")</span>
+  </code></pre>
+  <p>exemple : </p>
+  
+  <pre style="padding: 0px;"><code class="lang-js"><span class="hljs-comment">
+    FMS_saveFile("myList.txt","idk why there nothing.",as = "text/plain");
+  </code></pre>
+  
+  <p>avansed exemple : </p>
+  <pre style="padding: 0px;"><code class="lang-js">
+    function onGameStart() {
+      FMS_saveFile("stealedEvent.txt",game.events); // save all events.FM
+    }
+  </code></pre>
+  <pre style="padding: 0px;"><code class="lang-lua">
+    function onGameStart() 
+      FMS_saveFile("stealedEvent.txt",game.events) -- save all events.FM
+    end
+  </code></pre>
+</div>
+
+<hr>
+<h1>make anime/animate.js :</h1>
+<hr />
+
+
+
+<h2 id="makelocalanim">makeLocalAnim</h2>
+<div class="boxe">
+<p>for making custom anim in start with this simple scripts :] :
+work same with <strong>lua</strong></p>
+<pre><code class="lang-js">makeLocalAnim(<span class="hljs-string">"mySprite"</span>,game.modsFolder +<span class="hljs-string">"/images/myAnimation,10,0,0,1,"</span>GAME<span class="hljs-string">",100,true,0,0, false, false)</span>
+</code></pre>
+<p>working like that :</p>
+<pre><code class="lang-js"><span class="lang-js"><span class="hljs-title">makeLocalAnim</span><span class="hljs-params">(id, src, length, x, y, scale, putIn, speed, isloop, xdelay, ydelay, flip, paddingLength, otherCss)</span></span>
+</code></pre><ul>
+<li>for <code>putIn</code> : <br>
+you can put your element in: <strong>GAME</strong> , <strong>GUI</strong> or element with a id like :<pre><code class="lang-HTML">&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">id</span>=<span class="hljs-string">"hi"</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;
+</code></pre>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li>for <code>paddingLength</code> : <br>
+if is <code>true</code> your anim work like : <code>myAnim0000.png &gt; myAnim0018.png</code>  <br>
+if <code>false</code> your anim work like <code>myAnim0.png &gt; myAnim18.png</code></li>
+</ul>
+<p><br></p>
+<ul>
+<li>for <code>otherCss</code> : <br>
+for add addicional CSS, do that :<pre><code class="lang-CSS"><span class="hljs-built_in">background</span>-Color: <span class="hljs-built_in">red</span>; transfrom: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">20</span>deg);
+</code></pre>
+</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">// you can use this for that    ex: "ease"</span>
+<span class="hljs-comment">// rotate the game</span>
+<span class="hljs-keyword">var</span> myEase = <span class="hljs-string">"ease-in"</span>;
+<span class="hljs-keyword">var</span> myAnimation = FMS_makeCSSanim(<span class="hljs-string">"GAME"</span>,<span class="hljs-number">1</span>,myEase,<span class="hljs-string">"1"</span>,[
+  { transform: <span class="hljs-string">'rotate(95deg)'</span> }
+])
+myAnimation.play();
+myAnimation.onfinish = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{}
+</code></pre>
+</div>
+
+
+
+<hr>
+<h1>ease/custom movent :</h1>
+<hr />
+
+<h2 id="easing">easing</h2>
+<div class="boxe">
+<p><strong>linear :</strong></p>
+<ul>
+<li>linear  </li>
+<li>linear(0, 0.25, 1)</li>
+<li>linear(0, 0.25 75%, 1)</li>
+</ul>
+<p><strong>ease :</strong></p>
+<ul>
+<li>ease                  </li>
+<li>ease-in               </li>
+<li>ease-out              </li>
+<li><p>ease-in-out           </p>
+</li>
+<li><p>cubic-bezier(0.25, 0.1, 0.25, 1)</p>
+</li>
+</ul>
+<p><strong>step :</strong></p>
+<ul>
+<li>step-start            </li>
+<li><p>step-end             </p>
+</li>
+<li><p>steps(4, end)</p>
+</li>
+<li>steps(10, jump-both)</li>
+</ul>
+<p>more value <a href="https://andrewraycode.github.io/easing-utils/gh-pages/">here !</a></p>
+
+</div>

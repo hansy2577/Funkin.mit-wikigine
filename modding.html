@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Funkin.mit docs | modding</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="Prism/prism.css" />
+  <script src="Prism/prism.js"></script>
+</head>
+
+<body>
+  <div style="padding: 10px; background-color: #192560fc; height: 50px;">
+    <a href="index.html">home</a>
+  </div>
+
+<h2 id="custom-notes-speed">custom notes speed</h2>
+<div class="boxe">
+  <warn>notes speed are not compatible with pysch engine notes speed or other engine</warn><br><br><br>
+  <pp>for make low notes speed : -0.9</pp><br><br><pp>for make it faster : 1.3+</pp><br><br><p></p>  the most minial notes speed is <code>0.35</code> ( really really slow ), i strongly not recommended to exceed this speed </p>
+  <blockquote>
+    <p>risk to break notes scroll</p>
+  </blockquote>
+</div>
+
+
+
+<h2 id="characters-fmc">characters/.FMC</h2>
+<div class="boxe">
+<p>a <strong>.FMC</strong> is the characters data where the animation/delay/scale even scripts are in ( just like <strong>characters.json</strong> if you know <strong>Pysch engine</strong> )</p>
+<p>composition :</p>
+<pre><code class="lang-js">  <span class="hljs-string">"alt name"</span><span class="hljs-symbol">:<span class="hljs-string">"boyfriend"</span></span>,  <span class="hljs-regexp">//</span> character alt name
+  <span class="hljs-string">"icon"</span>: <span class="hljs-string">"bf"</span>,  <span class="hljs-regexp">//</span> icon folder
+  <span class="hljs-string">"position"</span>: [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],   <span class="hljs-regexp">//</span> character position ( <span class="hljs-keyword">in</span> w.i.p )
+  <span class="hljs-string">"scale"</span>: <span class="hljs-number">1.3</span>,    <span class="hljs-regexp">//</span> scale
+  <span class="hljs-string">"flipX ?"</span>: <span class="hljs-keyword">false</span>,    <span class="hljs-regexp">//</span> flip the position
+  <span class="hljs-string">"Padding Length ?"</span><span class="hljs-symbol">:true</span>,  <span class="hljs-regexp">//</span> <span class="hljs-keyword">use</span> a xml frame naming animation <span class="hljs-keyword">or</span> a default one-
+  <span class="hljs-regexp">//exemple</span>: <span class="hljs-string">"anim0.png &gt;&gt; anim19.png"</span> xml : <span class="hljs-string">"anim0000.png &gt;&gt; anim0019.png"</span>
+</code></pre>
+</div>
+
+
+
+</body>
+
+</html>
