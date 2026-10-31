@@ -1,0 +1,1 @@
+big credit to [Prism](https://prismjs.com/download#themes=prism-okaidia&languages=markup+css+clike+javascript+haxe+lua+markdown+powershell) for scripting syntax :D
